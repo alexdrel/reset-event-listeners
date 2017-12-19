@@ -22,14 +22,14 @@
     </section>
 
     <script type="module">
-      import {traceEventListeners, resetEventListeners} from "./index.js";
+      import { traceEventListeners } from "./index.js";
       let { pb, ab, rb, evs} = window;
 
-      traceEventListeners(pb, true);
+      let listeners = traceEventListeners(pb, true);
       ab.onclick = () => pb.addEventListener(evs.value, () => console.log('event'));
       ob.onclick = () => pb['on'+evs.value] = () => console.log('on');
       
-      rb.onclick = () => { resetEventListeners(pb); console.clear() ; };
+      rb.onclick = () => { listeners.reset(); console.clear() ; };
     </script>
   </body>
 </html>
