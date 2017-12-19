@@ -1,12 +1,12 @@
 {
   "name": "reset-event-listeners",
-  "version": "0.0.1",
   "description": "Reset DOM Element Event Listeners",
-  "main": "index.js",
-  "scripts": {
-    "start": "tsc -m es6 index.ts -outDir es6  -w",
-    "build": "tsc -m commonjs index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Alex Drel",
+  "license": "MIT",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexdrel/reset-event-listeners.git"
   },
   "keywords": [
     "event",
@@ -14,10 +14,15 @@
     "remove",
     "reset"
   ],
-  "author": "Alex Drel",
-  "license": "MIT",
+  "main": "index.js",
+  "types": "index.ts",
   "devDependencies": {
     "http-server": "^0.10.0",
     "typescript": "^2.6.2"
+  },
+  "scripts": {
+    "start": "tsc -m es6 index.ts -outDir es6  -w",
+    "build": "tsc -m commonjs index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
