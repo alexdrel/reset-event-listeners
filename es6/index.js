@@ -1,8 +1,8 @@
-;
-export function traceEventListeners(elem, traceRemoval) {
-    var addEventListener = elem.addEventListener, removeEventListener = elem.removeEventListener;
+export function traceEventListeners(target, traceRemoval) {
+    var addEventListener = target.addEventListener, removeEventListener = target.removeEventListener;
     var activeListeners = [];
     var storedOns = {};
+    var elem = target;
     for (var key in elem) {
         if (key.substr(0, 2) == 'on' && elem[key]) {
             storedOns[key] = elem[key];

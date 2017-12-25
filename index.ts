@@ -4,19 +4,23 @@ interface AddEventListenerArgs {
   options?: boolean | AddEventListenerOptions;
 }
 
+interface OnListeners {
+  [type: string]: EventListenerOrEventListenerObject;
+}
+
 export interface TracedTarget {
   target: EventTarget;
   activeListeners: AddEventListenerArgs[];
-  storedOns: { [type: string]: EventListenerOrEventListenerObject; };
+  storedOns: OnListeners;
   reset: () => void;
-};
+}
 
-export function traceEventListeners(elem: EventTarget, traceRemoval?: boolean): TracedTarget {
-  const { addEventListener, removeEventListener } = elem;
+export function traceEventListeners(target: EventTarget, traceRemoval?: boolean): TracedTarget {
+  const { addEventListener, removeEventListener } = target;
 
-  const activeListeners = [];
-  const storedOns = {};
-
+  const activeListeners: AddEventListenerArgs[] = [];
+  const storedOns: OnListeners = {};
+  const elem = target as any;
   for (const key in elem) {
     if (key.substr(0, 2) == 'on' && elem[key]) {
       storedOns[key] = elem[key];
